@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/common/common_button.dart';
 import 'package:ecommerce_app/constant/color.dart';
+import 'package:ecommerce_app/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +14,7 @@ class BottomNavigationTab extends StatefulWidget {
 class _BottomNavigationTabState extends State<BottomNavigationTab> {
   int currentIndex = 0;
   List screens = const [
-    SizedBox(),
+    HomePage(),
     SizedBox(),
     SizedBox(),
     SizedBox(),
@@ -74,7 +75,7 @@ class _BottomNavigationTabState extends State<BottomNavigationTab> {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         unselectedItemColor: kTextColor,
-        backgroundColor: kLightYellow,
+        backgroundColor: kOffWhiteColor,
         selectedItemColor: kWhiteColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -84,7 +85,7 @@ class _BottomNavigationTabState extends State<BottomNavigationTab> {
             currentIndex = index;
           });
         },
-        elevation: 23,
+        elevation: 20,
       ),
       body: screens.elementAt(currentIndex),
     );

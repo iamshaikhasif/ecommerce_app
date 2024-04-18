@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           title: 'E-commerce App',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: 'Roboto',
             textTheme: Typography.englishLike2021.apply(fontSizeFactor: 1.sp),

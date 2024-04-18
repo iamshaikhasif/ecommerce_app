@@ -28,7 +28,7 @@ class CommonButton extends StatelessWidget {
                 bottomRight: Radius.circular(23.r),
                 bottomLeft: Radius.circular(20.r),
               ),
-              color: kDarkYellow,
+              color: kLightBlue,
             ),
             // child: Center(child: child),
           ),
