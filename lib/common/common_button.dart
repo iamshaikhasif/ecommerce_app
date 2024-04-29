@@ -6,9 +6,10 @@ class CommonButton extends StatelessWidget {
   final Widget child;
   final double? height;
   final double? width;
+  final Color? color;
   final VoidCallback? onTap;
 
-  const CommonButton({required this.child, this.height, this.width, this.onTap, super.key});
+  const CommonButton({required this.child, this.height, this.width, this.onTap, super.key, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class CommonButton extends StatelessWidget {
                 bottomRight: Radius.circular(23.r),
                 bottomLeft: Radius.circular(20.r),
               ),
-              color: kLightBlue,
+              color: color ?? kLightBlue,
             ),
             // child: Center(child: child),
           ),

@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/common/common_button.dart';
 import 'package:ecommerce_app/constant/color.dart';
-import 'package:ecommerce_app/screen/home/home.dart';
+import 'package:ecommerce_app/screen/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

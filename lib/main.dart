@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/screen/bottom_navigation_tab.dart';
+import 'package:ecommerce_app/router/router_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: 'E-commerce App',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -26,10 +26,9 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
             useMaterial3: true,
           ),
-          home: child,
+          routerConfig: AppRouter.appRouter,
         );
       },
-      child: const BottomNavigationTab(),
     );
   }
 }

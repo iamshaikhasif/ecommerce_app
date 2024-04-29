@@ -8,13 +8,15 @@ class CustomText extends StatelessWidget {
   final double? fontSize;
   final String? fontFamily;
   final FontWeight? fontWeight;
+  final TextAlign? textAlign;
 
-  const CustomText(this.text, {this.color, this.fontSize, this.fontWeight, this.fontFamily, super.key});
+  const CustomText(this.text, {this.color, this.fontSize, this.fontWeight, this.fontFamily, super.key, this.textAlign});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign ?? TextAlign.start,
       style: TextStyle(
           color: color ?? kTextColor, fontFamily: fontFamily ?? 'Roboto', fontSize: fontSize ?? 14.sp, fontWeight: fontWeight ?? FontWeight.w400),
     );
