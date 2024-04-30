@@ -8,7 +8,7 @@ List<GadgetDetail> cartList = [
   GadgetDetail(name: 'Earphone', price: '60.00', color: kOrange, image: 'assets/images/earphone.png'),
 ];
 
-List<GadgetDetail> gadgetList = [
+List<GadgetDetail> gadgetStaticList = [
   GadgetDetail(name: 'smart watch', price: '100.00', color: kLightYellow, image: ImageResource.watchBlack),
   GadgetDetail(name: 'headphone', price: '77.00', color: kOrange, image: ImageResource.headphoneRed1),
   GadgetDetail(name: 'apple watch', price: '67.99', color: kLightBlue, image: ImageResource.appleWatch),

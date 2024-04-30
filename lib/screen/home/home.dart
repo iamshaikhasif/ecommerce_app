@@ -6,10 +6,12 @@ import 'package:ecommerce_app/constant/duration.dart';
 import 'package:ecommerce_app/constant/image.dart';
 import 'package:ecommerce_app/model/gadget_detail.dart';
 import 'package:ecommerce_app/router/router_name.dart';
+import 'package:ecommerce_app/screen/home/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,21 +27,8 @@ class _HomePageState extends State<HomePage> {
   List companyName = ['All', 'Apple', 'Samsung', 'HuaWei', 'Google'];
 
   @override
-  void initState() {
-    startAnimation();
-    super.initState();
-  }
-
-  Future startAnimation() async {
-    await Future.delayed(const Duration(milliseconds: 1000));
-    setState(() {
-      animate = true;
-      opacity = 1;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    Provider.of<HomeViewModel>(context).getGadgetList();
     return Scaffold(
       backgroundColor: kOffWhiteColor,
       body: SafeArea(
@@ -199,88 +188,88 @@ class _HomePageState extends State<HomePage> {
               ),
 
               //catogrey list
-              SizedBox(
-                height: 160.h,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                  itemCount: gadgetList.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    GadgetDetail item = gadgetList[index];
-                    return GestureDetector(
-                      onTap: () {
-                        context.push(AppRouterName.detailPage, extra: item);
-                      },
-                      child: Container(
-                        height: 160.h,
-                        width: 145.w,
-                        margin: EdgeInsets.only(
-                            right: index == gadgetList.length - 1 ? 15.w : 10.w,
-                            left: index == 0 ? 15.w : 0.w),
-                        padding: EdgeInsets.all(13.r),
-                        decoration: BoxDecoration(
-                          color: item.color,
-                          borderRadius: BorderRadius.circular(22.r),
-                        ),
-                        child: Column(
-                          children: [
-                            Hero(
-                              tag: "${item.image}",
-                              child: Image.asset(
-                                "${item.image}",
-                                height: 85.h,
+              Consumer<HomeViewModel>(builder: (context, vm, _) {
+                return SizedBox(
+                  height: vm.gadgetList.isNotEmpty ? 160.h : 0.h,
+                  width: MediaQuery.of(context).size.width,
+                  child: ListView.builder(
+                    itemCount: vm.gadgetList.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      GadgetDetail item = vm.gadgetList[index];
+                      return GestureDetector(
+                        onTap: () {
+                          context.push(AppRouterName.detailPage, extra: item);
+                        },
+                        child: Container(
+                          height: 160.h,
+                          width: 145.w,
+                          margin: EdgeInsets.only(
+                              right:
+                                  index == vm.gadgetList.length - 1 ? 15.w : 10.w,
+                              left: index == 0 ? 15.w : 0.w),
+                          padding: EdgeInsets.all(13.r),
+                          decoration: BoxDecoration(
+                            color: item.color,
+                            borderRadius: BorderRadius.circular(22.r),
+                          ),
+                          child: Column(
+                            children: [
+                              Hero(
+                                tag: "${item.image}",
+                                child: Image.asset(
+                                  "${item.image}",
+                                  height: 85.h,
+                                ),
                               ),
+                              SizedBox(height: 10.h),
+                              Row(
+                                children: [
+                                  CustomText(item.name!,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 10.sp),
+                                  const Spacer(),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.star_rounded,
+                                          size: 15.sp, color: kTextColor),
+                                      CustomText(' 4.8',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11.sp)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 5.h),
+                              Row(
+                                children: [
+                                  CustomText('\$${item.price}',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12.sp),
+                                  const Spacer(),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.favorite,
+                                          size: 14.sp, color: kTextColor),
+                                      CustomText(' 86%',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 11.sp)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ).animate().fadeIn(duration: 1000.ms),
+                        ).animate().slideX(
+                              delay: (50 * index).ms,
+                              duration: (200 * index).ms,
                             ),
-                            SizedBox(height: 10.h),
-                            Row(
-                              children: [
-                                CustomText(gadgetList[index].name!,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10.sp),
-                                const Spacer(),
-                                Row(
-                                  children: [
-                                    Icon(Icons.star_rounded,
-                                        size: 15.sp, color: kTextColor),
-                                    CustomText(' 4.8',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11.sp)
-                                  ],
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 5.h),
-                            Row(
-                              children: [
-                                CustomText('\$${gadgetList[index].price}',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12.sp),
-                                const Spacer(),
-                                Row(
-                                  children: [
-                                    Icon(Icons.favorite,
-                                        size: 14.sp, color: kTextColor),
-                                    CustomText(' 86%',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11.sp)
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ).animate().fadeIn(duration: 1000.ms),
-                      )
-                          .animate()
-                          .slideX(
-                            delay: (50 * index).ms,
-                            duration: (200 * index).ms,
-                          )
-                        ,
-                    );
-                  },
-                ),
-              ),
+                      );
+                    },
+                  ),
+                );
+              }),
 
               //Recommended label
               Padding(
@@ -300,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     GadgetDetail item = gadgetreCommendationList[index];
                     return GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         context.push(AppRouterName.detailPage, extra: item);
                       },
                       child: Container(

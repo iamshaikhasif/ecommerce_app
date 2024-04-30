@@ -4,10 +4,12 @@ import 'package:ecommerce_app/common/custom_text.dart';
 import 'package:ecommerce_app/common/feature_item.dart';
 import 'package:ecommerce_app/constant/color.dart';
 import 'package:ecommerce_app/model/gadget_detail.dart';
+import 'package:ecommerce_app/screen/home/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key, required this.gadgetDetail});
@@ -18,6 +20,12 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,25 +49,28 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 fontSize: 18.sp,
                 fontFamily: robotoBoldFontFamily,
               ),
-            ).animate().fadeIn(duration: 1000.ms),
-            Container(
-              height: 40.h,
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(.8),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10.r),
+            ).animate().fadeIn(duration: 1000.ms).slideX(duration: 1000.ms, begin: -1, end: 0),
+            GestureDetector(
+              onTap: (){},
+              child: Container(
+                height: 40.h,
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(.8),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10.r),
+                  ),
+                ),
+                child: CustomText(
+                  "Add to Cart",
+                  color: kWhiteColor,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: robotoBoldFontFamily,
                 ),
               ),
-              child: CustomText(
-                "Add to Cart",
-                color: kWhiteColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w700,
-                fontFamily: robotoBoldFontFamily,
-              ),
-            ).animate().scaleY(duration: 1000.ms).fadeIn(duration: 1000.ms),
+            ).animate().slideX(duration: 1000.ms, begin: 1, end: 0).fadeIn(duration: 1000.ms),
           ],
         ),
       ),

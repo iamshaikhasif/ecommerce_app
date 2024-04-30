@@ -1,9 +1,22 @@
 import 'package:ecommerce_app/router/router_page.dart';
+import 'package:ecommerce_app/screen/home/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<HomeViewModel>(
+          create: (context) => HomeViewModel(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
