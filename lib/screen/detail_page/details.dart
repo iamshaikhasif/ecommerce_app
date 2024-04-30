@@ -4,12 +4,10 @@ import 'package:ecommerce_app/common/custom_text.dart';
 import 'package:ecommerce_app/common/feature_item.dart';
 import 'package:ecommerce_app/constant/color.dart';
 import 'package:ecommerce_app/model/gadget_detail.dart';
-import 'package:ecommerce_app/screen/home/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key, required this.gadgetDetail});

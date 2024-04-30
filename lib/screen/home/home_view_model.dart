@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/constant/custom_data.dart';
 import 'package:ecommerce_app/model/gadget_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomeViewModel with ChangeNotifier {
   final List<GadgetDetail> _gadgetDetailList = [];
