@@ -5,6 +5,7 @@ import 'package:ecommerce_app/common/feature_item.dart';
 import 'package:ecommerce_app/constant/color.dart';
 import 'package:ecommerce_app/model/gadget_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -40,7 +41,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 fontSize: 18.sp,
                 fontFamily: robotoBoldFontFamily,
               ),
-            ),
+            ).animate().fadeIn(duration: 1000.ms),
             Container(
               height: 40.h,
               padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -56,9 +57,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 color: kWhiteColor,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w700,
-                fontFamily: 'Roboto_Bold',
+                fontFamily: robotoBoldFontFamily,
               ),
-            ),
+            ).animate().scaleY(duration: 1000.ms).fadeIn(duration: 1000.ms),
           ],
         ),
       ),
@@ -101,9 +102,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           color: widget.gadgetDetail!.color,
                           child: Icon(Icons.arrow_back_ios,
                               color: kWhiteColor, size: 22.sp),
-                        ),
-                        Icon(Icons.favorite_border,
-                            color: kWhiteColor, size: 28.sp),
+                        ).animate().fadeIn(duration: 1000.ms),
+                        CommonButton(
+                          color: Colors.transparent,
+                          child: Icon(Icons.favorite_border,
+                              color: kWhiteColor, size: 28.sp),
+                        ).animate().fadeIn(duration: 1000.ms),
                       ],
                     ),
                   ),
@@ -132,13 +136,29 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ColorWidget(color: Colors.black, selectedColor: widget.gadgetDetail!.color, isSelected: true,),
-                            SizedBox(width: 10.w,),
-                            ColorWidget(color: Colors.grey, selectedColor: widget.gadgetDetail!.color, isSelected: false,),
-                            SizedBox(width: 10.w,),
-                            ColorWidget(color: Colors.green, selectedColor: widget.gadgetDetail!.color, isSelected: false,),
-                            ],
-                        ),
+                            ColorWidget(
+                              color: Colors.black,
+                              selectedColor: widget.gadgetDetail!.color,
+                              isSelected: true,
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            ColorWidget(
+                              color: Colors.grey,
+                              selectedColor: widget.gadgetDetail!.color,
+                              isSelected: false,
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            ColorWidget(
+                              color: Colors.green,
+                              selectedColor: widget.gadgetDetail!.color,
+                              isSelected: false,
+                            ),
+                          ],
+                        ).animate().slideX(duration: 1000.ms).fadeIn(duration: 1000.ms),
 
                         //main Feature
                         Padding(
@@ -157,7 +177,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   icon: Icons.bluetooth_rounded,
                                   label: "Bluetooth"),
                             ],
-                          ),
+                          ).animate().slideX(duration: 1000.ms).fadeIn(duration: 1000.ms),
                         ),
 
                         CustomText(
@@ -165,14 +185,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           fontFamily: robotoBoldFontFamily,
                           fontWeight: FontWeight.w700,
                           fontSize: 20.sp,
-                        ),
+                        ).animate().fadeIn(duration: 1000.ms, delay: 1000.ms),
                         CustomText(
                           "A smartwatch is a wearable computer device in the form of a watch that provides a local touchscreen interface for daily use, while an associated smartphone app provides management and telemetry, such as long-term biomonitoring. The aluminum case is lightweight and made from 100 percent recycled aerospace-grade alloy.",
                           fontFamily: robotoFontFamily,
                           fontWeight: FontWeight.w400,
                           fontSize: 14.sp,
                           textAlign: TextAlign.justify,
-                        ),
+                        ).animate().fadeIn(duration: 1000.ms, delay: 1000.ms),
                       ],
                     ),
                   )

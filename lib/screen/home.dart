@@ -208,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     GadgetDetail item = gadgetList[index];
-                    return InkWell(
+                    return GestureDetector(
                       onTap: () {
                         context.push(AppRouterName.detailPage, extra: item);
                       },
