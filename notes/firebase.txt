@@ -1,0 +1,19 @@
+Setup Firebase using CLI
+
+1. Install Node Js
+2. npm install -g firebase-tools 
+3. dart pub global activate flutterfire_cli
+4. After Succssing this command you'll find the warining to set the path in your enviroment. Set the path in you enviroment
+5. firebase login
+6. flutterfire configure
+7. select your project and done your firebase is setup now
+
+Note: Some time youwill face a problem after entring the firebase login command.
+
+Issue:
+File C:\Users\Asif\AppData\Roaming\npm\firebase.ps1 cannot be loaded because running scripts is disabled on this    
+system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+
+Sloutions:
+To slove this issue just delete the firebase.ps1 file and try again
+
